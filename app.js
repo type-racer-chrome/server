@@ -19,14 +19,11 @@ app.use(errorHandler)
 
 io.on('connection', function(socket) {
     console.log(' user connected')
-    io.emit('hi', 'INI LOH MASOOOKK')
-    // socket.on('joinRoom', (val) => {
-    //     socket.join('roomPlay', () => {
-    //         // io.emit('broadcast', 'ini masuk cuy')
-    //         socket.broadcast.emit('roomPlay', 'ini masuk')
-    //         console.log('user has join')
-    //     })
-    // })
+
+    
+    socket.on('joinGame', (val) => {
+        io.emit('joinGame', val)
+    })
 
     // socket.on('startGame', payload => {
     //     socket.join('roomPlay', (err) => {
@@ -35,9 +32,17 @@ io.on('connection', function(socket) {
     //     })
     // })
 
-    socket.on('chat', (msg) => {
-        io.emit('message', msg)
+    socket.on('startGame', (msg) => {
+        io.emit('gamePlay', msg)
         console.log('message: ', msg)
+    })
+
+    socket.on('backToLandingPage', (username) => {
+        io.emit('deleteUser', username)
+    })
+
+    socket.on('disconnect',()=> {
+        console.log('disconnect')
     })
 })
 
