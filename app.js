@@ -5,6 +5,8 @@ const server = http.createServer(app)
 const io = require('socket.io')(server)
 const cors = require('cors')
 const errorHandler = require('./middlewares/errorHandler')
+const PORT = process.env.PORT || 3000
+
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
@@ -60,6 +62,6 @@ io.on('connection', function(socket) {
 })
 
 
-server.listen(3000, function () {
+server.listen(PORT, function () {
     console.log('listening on *:3000');
 });
