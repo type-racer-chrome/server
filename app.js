@@ -41,6 +41,14 @@ io.on('connection', function(socket) {
         io.emit('deleteUser', username)
     })
 
+    socket.on('race', (payload) => {
+        socket.emit('race', payload)
+    })
+
+    socket.on('highscore', (payload) => {
+        io.emit('highscore', payload)
+    })
+
     socket.on('disconnect',()=> {
         console.log('disconnect')
     })
