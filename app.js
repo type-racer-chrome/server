@@ -22,15 +22,9 @@ io.on('connection', function(socket) {
 
     
     socket.on('joinGame', (val) => {
+        // socket.open()
         io.emit('joinGame', val)
     })
-
-    // socket.on('startGame', payload => {
-    //     socket.join('roomPlay', (err) => {
-    //         console.log('tingganl jalanin gamenya')
-    //         // io.to(payload.id).emit('playing', true)
-    //     })
-    // })
 
     socket.on('startGame', (msg) => {
         io.emit('gamePlay', msg)
@@ -38,6 +32,7 @@ io.on('connection', function(socket) {
     })
 
     socket.on('backToLandingPage', (username) => {
+        console.log(username)
         io.emit('deleteUser', username)
     })
 
@@ -49,7 +44,12 @@ io.on('connection', function(socket) {
         io.emit('highscore', payload)
     })
 
-    socket.on('disconnect',()=> {
+    socket.on('resetPlayer', () => {
+        console.log('KE TRIGGER RESETTTT')
+        io.emit('resetPlayer')
+    })
+
+    io.on('disconnect',()=> {
         console.log('disconnect')
     })
 })
