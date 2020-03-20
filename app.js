@@ -42,12 +42,17 @@ io.on('connection', function(socket) {
     })
 
     socket.on('race', (payload) => {
+        console.log(payload, 'inin payload')
         socket.emit('race', payload)
     })
 
     socket.on('highscore', (payload) => {
         io.emit('highscore', payload)
     })
+
+    socket.on('score', (payload) => {
+        io.emit('score', payload)
+    }) 
 
     socket.on('disconnect',()=> {
         console.log('disconnect')
