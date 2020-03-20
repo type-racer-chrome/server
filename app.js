@@ -37,6 +37,7 @@ io.on('connection', function(socket) {
     })
 
     socket.on('race', (payload) => {
+        console.log(payload, 'inin payload')
         socket.emit('race', payload)
     })
 
@@ -48,8 +49,12 @@ io.on('connection', function(socket) {
         console.log('KE TRIGGER RESETTTT')
         io.emit('resetPlayer')
     })
+    
+    socket.on('score', (payload) => {
+        io.emit('score', payload)
+    }) 
 
-    io.on('disconnect',()=> {
+    socket.on('disconnect',()=> {
         console.log('disconnect')
     })
 })
