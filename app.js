@@ -27,7 +27,7 @@ io.on('connection', function(socket) {
 
     // socket.on('startGame', payload => {
     //     socket.join('roomPlay', (err) => {
-    //         console.log('tinggal jalanin gamenya')
+    //         console.log('tingganl jalanin gamenya')
     //         // io.to(payload.id).emit('playing', true)
     //     })
     // })
